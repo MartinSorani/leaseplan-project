@@ -21,8 +21,6 @@
         <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <encoding>UTF-8</encoding>
-        <tags></tags>
-        <webdriver.base.url></webdriver.base.url>
     </properties>
     <dependencies>
         <dependency>
@@ -121,7 +119,7 @@
                 <version>${maven.surefire.version}</version>
                 <configuration>
                     <includes>
-                        <include>**/*.java</include>
+                        <include>**/*.feature</include>
                     </includes>
                     <parallel>methods</parallel>
                     <useUnlimitedThreads>true</useUnlimitedThreads>
@@ -159,7 +157,6 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <tags>${tags}</tags>
                     <reports>single-page-html</reports>
                 </configuration>
                 <executions>
