@@ -140,9 +140,6 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
-                    <includes>
-                        <include>src/test</include>
-                    </includes>
                 </configuration>
             </plugin>
             <plugin>
@@ -165,6 +162,18 @@
                         <phase>post-integration-test</phase>
                         <goals>
                             <goal>aggregate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
                         </goals>
                     </execution>
                 </executions>
