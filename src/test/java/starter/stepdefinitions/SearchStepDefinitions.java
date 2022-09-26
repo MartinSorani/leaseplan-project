@@ -1,36 +1,41 @@
 package starter.stepdefinitions;
 
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
-import org.hamcrest.Matchers;
 
 import static net.serenitybdd.rest.SerenityRest.restAssuredThat;
-import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.*;
 
 public class SearchStepDefinitions {
 
     @Steps
-    public CarsAPI carsAPI;
+    public ProductAPI productAPI = new ProductAPI();
 
-    @When("he calls endpoint {string}")
-    public void heCallsEndpoint(String arg0) {
-        SerenityRest.given().get(arg0);
+    @Given("a product API")
+    public void setEndpoint() {
+        productAPI = new ProductAPI();
     }
 
-    @Then("he sees the results displayed for apple")
-    public void heSeesTheResultsDisplayedForApple() {
+    @When("user calls endpoint {string}")
+    public void userCallsEndpoint(String product) {
+        SerenityRest
+                .given()
+                .spec(productAPI.defaultSpec())
+                .get(product);
+    }
+
+    @Then("user sees the results displayed for {string}")
+    public void userSeesResultsForProduct(String expected) {
         restAssuredThat(response -> response.statusCode(200));
+        restAssuredThat(response -> response.body("title", hasItems(containsString(expected))));
     }
 
-    @Then("he sees the results displayed for mango")
-    public void heSeesTheResultsDisplayedForMango() {
-        restAssuredThat(response -> response.body("title", contains("mango")));
-    }
-
-    @Then("he doesn not see the results")
-    public void he_Doesn_Not_See_The_Results() {
-        restAssuredThat(response -> response.body("error", contains("True")));
+    @Then("user cannot see any results")
+    public void userCannotSeeResults() {
+        restAssuredThat(response -> response.body("detail.error", contains("true")));
     }
 }
