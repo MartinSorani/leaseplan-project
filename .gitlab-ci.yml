@@ -18,6 +18,15 @@
 
 image: maven:3.8.6-openjdk-18
 
+variables:
+  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+cache:
+  paths:
+    - .m2/repository/
+    - target/
+
 stages:          # List of stages for jobs, and their order of execution
   - build
   - test
@@ -28,7 +37,7 @@ build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
     - echo "Compiling the code..."
-    - mvn compile
+    - mvn $MAVEN_CLI_OPTS compile
     - echo "Compile complete."
 
 serenity-test:   
