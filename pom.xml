@@ -93,12 +93,6 @@
 
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>central</id>
-            <url>${env.MAVEN_REPO_URL}/default-maven-local</url>
-        </repository>
-    </repositories>
     <distributionManagement>
         <repository>
             <id>central</id>
