@@ -1,9 +1,9 @@
 package starter.stepdefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 
@@ -20,22 +20,40 @@ public class SearchStepDefinitions {
         productAPI = new ProductAPI();
     }
 
-    @When("user calls endpoint {string}")
-    public void userCallsEndpoint(String product) {
+    @When("user GETS endpoint {string}")
+    public void userGetsEndpoint(String product) {
         SerenityRest
                 .given()
                 .spec(productAPI.defaultSpec())
                 .get(product);
     }
 
-    @Then("user sees the results displayed for {string}")
+    @When("user POSTS endpoint {string}")
+    public void userPostsEndpoint(String product) {
+        SerenityRest
+                .given()
+                .spec(productAPI.defaultSpec())
+                .post(product);
+    }
+
+    @Then("user receives status code {int}")
+    public void statusCodeIs(int statusCode) {
+        restAssuredThat(response -> response.statusCode(statusCode));
+    }
+
+    @And("user sees the results displayed for {string}")
     public void userSeesResultsForProduct(String expected) {
-        restAssuredThat(response -> response.statusCode(200));
         restAssuredThat(response -> response.body("title", hasItems(containsString(expected))));
     }
 
-    @Then("user cannot see any results")
+    @And("user cannot see any results")
     public void userCannotSeeResults() {
-        restAssuredThat(response -> response.body("detail.error", contains("true")));
+        restAssuredThat(response -> response.body("detail.error", is(true)));
+        restAssuredThat(response -> response.body("detail.message", containsStringIgnoringCase("Not found")));
+    }
+
+    @And("user receives method not allowed message")
+    public void userReceivesMethodNotAllowed() {
+        restAssuredThat(response -> response.body("detail", containsStringIgnoringCase("Method Not Allowed")));
     }
 }

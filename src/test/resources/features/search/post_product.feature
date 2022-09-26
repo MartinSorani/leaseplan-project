@@ -6,8 +6,9 @@ Feature: Search for the product
 
   Scenario Outline: User can see the results for every product
     Given a product API
-    When user calls endpoint "<product>"
-    Then user sees the results displayed for "<product>"
+    When user GETS endpoint "<product>"
+    Then user receives status code 200
+    And user sees the results displayed for "<product>"
 
     Examples: Valid
             |product|
@@ -15,3 +16,15 @@ Feature: Search for the product
             |mango|
             |tofu|
             |water|
+
+  Scenario: User cannot see results for non existent product
+    Given a product API
+    When user GETS endpoint "<car>"
+    Then user receives status code 404
+    And user cannot see any results
+
+  Scenario: User cannot POST to endpoint
+    Given a product API
+    When user POSTS endpoint "mango"
+    Then user receives status code 405
+    And user receives method not allowed message
