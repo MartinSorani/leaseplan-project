@@ -44,7 +44,7 @@ serenity-test:
   stage: test   
   script:
     - echo "Running e2e tests..."
-    - mvn clean verify
+    - mvn clean $MAVEN_CLI_OPTS verify
     - echo "Testing complete"
   artifacts:
     when: always
