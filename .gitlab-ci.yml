@@ -26,7 +26,6 @@ cache:
 stages:          # List of stages for jobs, and their order of execution
   - build
   - test
-  - report
   - debug
   - deploy
 
@@ -50,19 +49,6 @@ serenity-test:
     expire_in: 1 week
   only:
     - master
-
-publish-report:
-  stage: report
-  only:
-    - master
-  script:
-    - mkdir public
-    - mv target/site/serenity/* public
-  artifacts:
-    when: always
-    paths:
-      - public
-    expire_in: 1 week
 
 debug-job:
   stage: debug
