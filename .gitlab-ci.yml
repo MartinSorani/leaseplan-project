@@ -53,8 +53,6 @@ serenity-test:
 
 publish-report:
   stage: report
-  dependencies: 
-    - serenity-test
   only:
     - master
   script:
