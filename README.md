@@ -17,6 +17,7 @@
 * [Prerequisites](#prerequisites)
     * [Running tests locally](#running-tests-locally)
     * [Running tests from Gitlab CI/CD](#running-tests-from-Gitlab)
+* [Refactor](#refactor)
 * [Test scenarios](#test-scenarios)
 * [Contact](#contact)
 
@@ -137,6 +138,9 @@ Go to the [pipeline](https://gitlab.com/MartinSorani/leaseplan-project/-/pipelin
 
 <img src=images/pipeline_step_6.png height="250">
 
+## Refactor
+
+Refactoring done on the original project is described in the file [`src/main/java/starter/Refactor.md`](src/main/java/starter/Refactor.md)
 
 ## Test scenarios
 
