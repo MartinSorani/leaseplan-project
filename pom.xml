@@ -98,7 +98,7 @@
             <url>${env.MAVEN_REPO_URL}/default-maven-local</url>
         </repository>
         <snapshotRepository>
-            <id>snapshots</id>
+            <id>snapshot</id>
             <name>a0tc0cf5g521z-artifactory-primary-0-snapshots</name>
             <url>${env.MAVEN_REPO_URL}/default-maven-local</url>
         </snapshotRepository>
