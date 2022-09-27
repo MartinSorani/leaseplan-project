@@ -72,7 +72,8 @@ deploy-job:      # This job runs in the deploy stage.
   environment: production
   script:
     - echo "Deploying application..."
-    - mvn clean $MAVEN_CLI_OPTS package -DskipTests=true
+    #- mvn clean $MAVEN_CLI_OPTS package -DskipTests=true
+    - mvn $MAVEN_CLI_OPTS deploy
     - echo "Application successfully deployed."
   artifacts:
     when: on_success
