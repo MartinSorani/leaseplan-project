@@ -21,11 +21,19 @@ image: maven:3.8.6-openjdk-18
 variables:
   MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+  ARTIFACTORY_SERVER_ID: "central"
 
 cache:
   paths:
     - .m2/repository/
     - target/
+
+before_script:
+ # Download JFrog CLI
+ -  curl -fL https://install-cli.jfrog.io | sh
+ # configure artifactory server
+ - jf config add $ARTIFACTORY_SERVER_ID--url="$MAVEN_REPO_URL/default-maven-local" --apikey="$MAVEN_ACCESS_TOKEN"
+ - jf config show
 
 stages:          # List of stages for jobs, and their order of execution
   #- build
@@ -78,10 +86,15 @@ debug-job:
 deploy-job:      # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
   environment: production
+  variables:
+    REPO_NAME:  maven
+    ARTIFACT_NAME: myart
   script:
     - echo "Deploying application..."
     #- mvn clean $MAVEN_CLI_OPTS package -DskipTests=true
-    - mvn -s .m2/settings.xml --batch-mode deploy
+    - jfrog rt c
+    #- jfrog rt u "target/*-SNAPSHOT*.jar" $REPO_NAME/$ARTIFACT_NAME.jar" --recursive=false
+    #- mvn -s .m2/settings.xml --batch-mode deploy
     - echo "Application successfully deployed."
   artifacts:
     when: on_success
