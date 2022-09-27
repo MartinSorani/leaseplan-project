@@ -72,6 +72,8 @@ debug-job:
   stage: debug
   script:
     - curl -H"Authorization:Bearer $MAVEN_ACCESS_TOKEN" $MAVEN_REPO_URL/default-maven-local/
+    - 'mvn help:effective-settings'
+    - 'mvn help:system'
 
 deploy-job:      # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
