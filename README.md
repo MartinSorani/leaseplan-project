@@ -18,6 +18,7 @@
     * [Running tests locally](#running-tests-locally)
     * [Running tests from Gitlab CI/CD](#running-tests-from-Gitlab)
 * [Refactor](#refactor)
+* [CI/CD](#cicd)
 * [Test scenarios](#test-scenarios)
 * [Contact](#contact)
 
@@ -141,6 +142,14 @@ Go to the [pipeline](https://gitlab.com/MartinSorani/leaseplan-project/-/pipelin
 ## Refactor
 
 Refactoring done on the original project is described in the file [`src/main/java/starter/Refactor.md`](src/main/java/starter/Refactor.md)
+
+## CI/CD
+
+All CI/CD steps are automated in a [Gitlab pipeline](https://gitlab.com/MartinSorani/leaseplan-project/-/pipelines) and built with Maven.\
+Deployment is done only when pushing against the `master` branch and the final artifact is published to a Maven repository hosted by Artifactory.
+
+<img src=images/artifactory_screenshot.png>
+
 
 ## Test scenarios
 
