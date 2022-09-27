@@ -111,6 +111,10 @@ mvn clean verify
 
 <img src=images/report_sample.png height="350" width="600">
 
+A single page version of the report can also be accessed inside the same folder with the name `serenity-summary.html`
+
+<img src=images/report_sample_single_page.png>
+
 ### Running tests from Gitlab
 
 Go to the [pipeline](https://gitlab.com/MartinSorani/leaseplan-project/-/pipelines) section
