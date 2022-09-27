@@ -26,39 +26,37 @@ cache:
 stages:          # List of stages for jobs, and their order of execution
   - build
   - test
+  - report
   - debug
   - deploy
 
-build-job:       # This job runs in the build stage, which runs first.
+build:       # This job runs in the build stage, which runs first.
   stage: build
   script:
     - echo "Compiling the code..."
     - mvn compile
     - echo "Compile complete."
 
-serenity-test:   
-  stage: test   
+test:
+  stage: test
+  dependencies: 
+    - build
   script:
     - echo "Running e2e tests..."
     - mvn clean verify
+    - mkdir public
+    - mv target/site/serenity/* public
     - echo "Testing complete"
   artifacts:
     when: always
     paths:
-      - target/site/serenity
+      - public
     expire_in: 1 week
   only:
     - master
 
-debug-job:
-  stage: debug
-  script:
-    - curl -H"Authorization:Bearer $MAVEN_ACCESS_TOKEN" $MAVEN_REPO_URL/default-maven-local/
-    - 'mvn help:effective-settings'
-    - 'mvn help:system'
-
-deploy-job:      # This job runs in the deploy stage.
-  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+deploy:           # This job runs in the deploy stage.
+  stage: deploy   # It only runs when *both* jobs in the test stage complete successfully.
   environment: production
   variables:
     ARTIFACTORY_SERVER_ID: central
