@@ -84,6 +84,7 @@ deploy-job:      # This job runs in the deploy stage.
   script:
     - echo "Deploying application..."
     #- mvn clean $MAVEN_CLI_OPTS package -DskipTests=true
+    - mvn $MAVEN_CLI_OPTS package
     # Download JFrog CLI
     -  curl -fL https://install-cli.jfrog.io | sh
     # configure artifactory server
