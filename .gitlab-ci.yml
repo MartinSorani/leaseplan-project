@@ -79,3 +79,5 @@ deploy-job:      # This job runs in the deploy stage.
     when: on_success
     paths:
       - target/*.jar
+  only:
+    - master
