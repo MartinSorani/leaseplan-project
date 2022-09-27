@@ -32,7 +32,7 @@ stages:          # List of stages for jobs, and their order of execution
   #- build
   #- test
   #- report
-  - debug
+  #- debug
   - deploy
 
 #build-job:       # This job runs in the build stage, which runs first.
@@ -69,12 +69,12 @@ stages:          # List of stages for jobs, and their order of execution
 #      - public
 #    expire_in: 1 week
 
-debug-job:
-  stage: debug
-  script:
-    - curl -H"Authorization:Bearer $MAVEN_ACCESS_TOKEN" $MAVEN_REPO_URL/default-maven-local/
-    - 'mvn help:effective-settings'
-    - 'mvn help:system'
+#debug-job:
+#  stage: debug
+#  script:
+#    - curl -H"Authorization:Bearer $MAVEN_ACCESS_TOKEN" $MAVEN_REPO_URL/default-maven-local/
+#    - 'mvn help:effective-settings'
+#    - 'mvn help:system'
 
 deploy-job:      # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
