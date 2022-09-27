@@ -17,7 +17,7 @@ Feature: Search for the product
             |tofu|
             |water|
 
-  Scenario: User cannot see results for non existent product
+  Scenario: User cannot see results for non-existent product
     Given a product API
     When user GETS endpoint "<car>"
     Then user receives status code 404
