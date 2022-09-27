@@ -91,7 +91,7 @@ deploy-job:      # This job runs in the deploy stage.
     - jf c add $ARTIFACTORY_SERVER_ID --url="$MAVEN_REPO_URL/default-maven-local" --access-token="$MAVEN_ACCESS_TOKEN"
     - jf config show
     - jf rt bc
-    - jf rt u target/*-test.jar leaseplan/"$ARTIFACT_NAME"_"$CI_PIPELINE_ID.jar" --recursive=false
+    - jf rt u target/*-tests.jar leaseplan/"$ARTIFACT_NAME"_"$CI_PIPELINE_ID.jar" --recursive=false
     #- mvn -s .m2/settings.xml --batch-mode deploy
     - echo "Application successfully deployed."
   artifacts:
