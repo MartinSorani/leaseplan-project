@@ -89,8 +89,8 @@ deploy-job:      # This job runs in the deploy stage.
     # configure artifactory server
     - jf c add $ARTIFACTORY_SERVER_ID --url="$MAVEN_REPO_URL/default-maven-local" --access-token="$MAVEN_ACCESS_TOKEN"
     - jf config show
-    - jfrog rt c
-    - jfrog rt u "target/cucumber-starter-1.0.0-SNAPSHOT-tests.jar" $ARTIFACT_NAME.jar --recursive=true
+    - jf rt c
+    - jf rt u "target/cucumber-starter-1.0.0-SNAPSHOT-tests.jar" $ARTIFACT_NAME.jar --recursive=true
     #- mvn -s .m2/settings.xml --batch-mode deploy
     - echo "Application successfully deployed."
   artifacts:
