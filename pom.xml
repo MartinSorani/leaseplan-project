@@ -91,7 +91,7 @@
 
     </dependencies>
 
-    <distributionManagement>
+<!--    <distributionManagement>
         <repository>
             <id>central</id>
             <name>a0tc0cf5g521z-artifactory-primary-0-releases</name>
@@ -102,7 +102,7 @@
             <name>a0tc0cf5g521z-artifactory-primary-0-snapshots</name>
             <url>${env.MAVEN_REPO_URL}/default-maven-local</url>
         </snapshotRepository>
-    </distributionManagement>
+    </distributionManagement>-->
 
     <build>
         <plugins>
