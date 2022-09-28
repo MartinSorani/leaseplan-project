@@ -29,17 +29,15 @@ stages:          # List of stages for jobs, and their order of execution
   - report
   - deploy
 
-build-stage:       # This job runs in the build stage, which runs first.
+build:       # This job runs in the build stage, which runs first.
   stage: build
   script:
     - echo "Compiling the code..."
     - mvn compile
     - echo "Compile complete."
 
-test-stage:
+test:
   stage: test
-  dependencies: 
-    - build
   script:
     - echo "Running e2e tests..."
     - mvn clean verify
@@ -55,11 +53,12 @@ test-stage:
 pages:
   stage: report
   dependencies:
-    - test-stage
+    - test
   script:
     - mkdir public
     - mv target/site/serenity/* public
   artifacts:
+    when: always
     paths:
       - public
     expire_in: 1 week
