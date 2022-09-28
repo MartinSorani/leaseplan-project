@@ -49,9 +49,9 @@ public class SearchStepDefinitions {
         restAssuredThat(response -> response.statusCode(statusCode));
     }
 
-    @And("the response body has a {string} field containing the word {string}")
-    public void userSeesResultsForProduct(String nameOfField, String expectedText) {
-        restAssuredThat(response -> response.body(nameOfField, hasItems(containsString(expectedText))));
+    @And("the response body contains the word {string}")
+    public void userSeesResultsForProduct(String expectedText) {
+        restAssuredThat(response -> response.body("title", hasItems(containsString(expectedText))));
     }
 
     @And("the response body contains error value {string} and message {string}")
@@ -60,7 +60,7 @@ public class SearchStepDefinitions {
         fieldContainsText("detail.message", message);
     }
 
-    @And("the response body has a field {string} with text {string}")
+    @And("the response body has a {string} field containing the word {string}")
     public void fieldContainsText(String fieldName, String text) {
         restAssuredThat(response -> response.body(fieldName, containsStringIgnoringCase(text)));
     }

@@ -10,7 +10,7 @@ Feature: Search for the product
   Scenario Outline: User can see the results for existing products
     When user sends out a "GET" request with parameter "<product>"
     Then the response returns HTTP status code 200
-    And the response body has a "title" field containing the word "<product>"
+    And the response body contains the word "<product>"
 
     Examples: Valid
             |product|
@@ -27,4 +27,4 @@ Feature: Search for the product
   Scenario: User cannot POST to endpoint
     When user sends out a "POST" request with parameter "mango"
     Then the response returns HTTP status code 405
-    And the response body has a field "detail" with text "Method Not Allowed"
+    And the response body has a "detail" field containing the word "Method Not Allowed"

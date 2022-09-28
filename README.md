@@ -168,7 +168,7 @@ Deployment is done only when pushing against the `master` branch and the final a
 **Given** a product API\
 **When** user GETS endpoint _car_\
 **Then** user receives status code 404\
-**And** user cannot see any results\
+**And** user cannot see any results
 
 **Scenario**: User cannot POST to endpoint\
 **Given** a product API\
