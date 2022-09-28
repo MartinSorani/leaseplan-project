@@ -43,23 +43,23 @@ You need to:
 This project follows a classic Maven structure. Notice however that action classes are not defined in the main folder so as to not contradict Serenity's recommended pattern, and since this is an api test suite, no page objects are declared inside the main folder either.\
 In the end, the final artifact is built from the classes defined inside the test section.
 
-📦src
-┣ 📂main
-┃ ┗ 📂java
-┃ ┃ ┗ 📂starter
-┃ ┃ ┃ ┗ 📜Refactor.md
-┗ 📂test
-┃ ┣ 📂java
-┃ ┃ ┗ 📂starter
-┃ ┃ ┃ ┣ 📂stepdefinitions
-┃ ┃ ┃ ┃ ┣ 📜CommonSteps.java
-┃ ┃ ┃ ┃ ┗ 📜SearchStepDefinitions.java
-┃ ┃ ┃ ┗ 📜TestRunner.java
-┃ ┗ 📂resources
-┃ ┃ ┣ 📂features
-┃ ┃ ┃ ┗ 📂search
-┃ ┃ ┃ ┃ ┗ 📜post_product.feature
-┃ ┃ ┣ 📜logback-test.xml
+📦src\
+┣ 📂main\
+┃ ┗ 📂java\
+┃ ┃ ┗ 📂starter\
+┃ ┃ ┃ ┗ 📜Refactor.md\
+┗ 📂test\
+┃ ┣ 📂java\
+┃ ┃ ┗ 📂starter\
+┃ ┃ ┃ ┣ 📂stepdefinitions\
+┃ ┃ ┃ ┃ ┣ 📜CommonSteps.java\
+┃ ┃ ┃ ┃ ┗ 📜SearchStepDefinitions.java\
+┃ ┃ ┃ ┗ 📜TestRunner.java\
+┃ ┗ 📂resources\
+┃ ┃ ┣ 📂features\
+┃ ┃ ┃ ┗ 📂search\
+┃ ┃ ┃ ┃ ┗ 📜post_product.feature\
+┃ ┃ ┣ 📜logback-test.xml\
 ┃ ┃ ┗ 📜serenity.conf
 
 ### Built With
