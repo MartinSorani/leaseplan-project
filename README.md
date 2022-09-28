@@ -10,6 +10,8 @@
     Short test assessment project
   </p>
 
+[![pipeline status](https://gitlab.com/MartinSorani/leaseplan-project/badges/master/pipeline.svg)](https://gitlab.com/MartinSorani/leaseplan-project/-/commits/master)
+
 ## Table of Contents
 
 * [Assignment requirements](#requirements-for-this-assignment)
