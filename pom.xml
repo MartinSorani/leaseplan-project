@@ -36,24 +36,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-screenplay</artifactId>
-            <version>${serenity.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-screenplay-webdriver</artifactId>
-            <version>${serenity.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-ensure</artifactId>
-            <version>${serenity.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
@@ -71,18 +53,10 @@
             <version>${logback.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.6.2</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-rest-assured</artifactId>
             <version>${serenity.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
@@ -91,18 +65,18 @@
 
     </dependencies>
 
-<!--    <distributionManagement>
-        <repository>
-            <id>central</id>
-            <name>a0tc0cf5g521z-artifactory-primary-0-releases</name>
-            <url>${env.MAVEN_REPO_URL}/default-maven-local</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshot</id>
-            <name>a0tc0cf5g521z-artifactory-primary-0-snapshots</name>
-            <url>${env.MAVEN_REPO_URL}/default-maven-local</url>
-        </snapshotRepository>
-    </distributionManagement>-->
+    <!--    <distributionManagement>
+            <repository>
+                <id>central</id>
+                <name>a0tc0cf5g521z-artifactory-primary-0-releases</name>
+                <url>${env.MAVEN_REPO_URL}/default-maven-local</url>
+            </repository>
+            <snapshotRepository>
+                <id>snapshot</id>
+                <name>a0tc0cf5g521z-artifactory-primary-0-snapshots</name>
+                <url>${env.MAVEN_REPO_URL}/default-maven-local</url>
+            </snapshotRepository>
+        </distributionManagement>-->
 
     <build>
         <plugins>
