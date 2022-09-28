@@ -18,7 +18,7 @@
     * [Built With](#built-with)
 * [Prerequisites](#prerequisites)
     * [Running tests locally](#running-tests-locally)
-    * [Running tests from Gitlab CI/CD](#running-tests-from-Gitlab)
+    * [Running tests from Gitlab CI/CD](#running-tests-from-gitlab-pipeline)
 * [Refactor](#refactor)
 * [CI/CD](#cicd)
 * [Test scenarios](#test-scenarios)
@@ -118,7 +118,7 @@ A single page version of the report can also be accessed inside the same folder 
 
 <img src=images/report_sample_single_page.png>
 
-### Running tests from Gitlab
+### Running tests from Gitlab pipeline
 
 Go to the [pipeline](https://gitlab.com/MartinSorani/leaseplan-project/-/pipelines) section
 
@@ -130,21 +130,11 @@ Go to the [pipeline](https://gitlab.com/MartinSorani/leaseplan-project/-/pipelin
 
 <img src=images/pipeline_step_2.png height="250">
 
-3. Access the report generated inside the test step
+3. Once the pipeline has finished running, access the published test report at:
 
-<img src=images/pipeline_step_3.png height="250">
+https://martinsorani.gitlab.io/leaseplan-project/
 
-4. Access the artifacts
-
-<img src=images/pipeline_step_4.png height="250">
-
-5. Open the `public` folder
-
-<img src=images/pipeline_step_5.png height="250">
-
-6. Open the `index.html` file
-
-<img src=images/pipeline_step_6.png height="250">
+> **_NOTE:_** This report expires in a week.
 
 ## Refactor
 
