@@ -4,11 +4,13 @@ Feature: Search for the product
 ### Available products: "apple", "mango", "tofu", "water"
 ### Prepare Positive and negative scenarios
 
-  Scenario Outline: User can see the results for every product
-    Given a product API
-    When user GETS endpoint "<product>"
-    Then user receives status code 200
-    And user sees the results displayed for "<product>"
+  Background:
+    Given I set the endpoint url to "/api/v1/search/test/"
+
+  Scenario Outline: User can see the results for existing products
+    When user sends out a "GET" request with parameter "<product>"
+    Then the response returns HTTP status code 200
+    And the response body has a "title" field containing the word "<product>"
 
     Examples: Valid
             |product|
@@ -18,13 +20,11 @@ Feature: Search for the product
             |water|
 
   Scenario: User cannot see results for non-existent product
-    Given a product API
-    When user GETS endpoint "<car>"
-    Then user receives status code 404
-    And user cannot see any results
+    When user sends out a "GET" request with parameter "car"
+    Then the response returns HTTP status code 404
+    And the response body contains error value "true" and message "Not found"
 
   Scenario: User cannot POST to endpoint
-    Given a product API
-    When user POSTS endpoint "mango"
-    Then user receives status code 405
-    And user receives method not allowed message
+    When user sends out a "POST" request with parameter "mango"
+    Then the response returns HTTP status code 405
+    And the response body has a field "detail" with text "Method Not Allowed"
